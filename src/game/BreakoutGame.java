@@ -28,7 +28,7 @@ public class BreakoutGame extends Application {
     public static final int PADDLE_SPEED = 10;
     public static final String BRICK_IMAGE = "blueBrick.gif";
     public static final String PADDLE_IMAGE = "paddle.gif";
-    
+
 
     private Scene myScene;
     private ImageView myBall;
