@@ -4,7 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Brick{
-    public static final int BRICK_SIZE = 60;
+    public static final int BRICK_WIDTH = 40;
+    public static final int BRICK_HEIGHT = 20;
 
     private int hitsLeft;
     private String powerUp;
@@ -36,8 +37,8 @@ public class Brick{
 
     public void setBrickImage(ImageView brickImage) {
         this.brickImage = brickImage;
-        this.brickImage.setPreserveRatio(true);
-        this.brickImage.setFitWidth(BRICK_SIZE);
+        this.brickImage.setFitWidth(BRICK_WIDTH);
+        this.brickImage.setFitHeight(BRICK_HEIGHT);
     }
 
     public void setHitsLeft(int hitsLeft){
@@ -56,12 +57,17 @@ public class Brick{
         this.brickImage.setY(y);
     }
 
-    public int getBrickSize(){
-        return BRICK_SIZE;
-    }
-
     public boolean getIfGone(){
         return ifGone;
+    }
+
+    public void setIfGone(boolean setGone){
+        this.ifGone = setGone;
+    }
+
+    public void setLoc(double x, double y){
+        this.setX(x);
+        this.setY(y);
     }
 }
 

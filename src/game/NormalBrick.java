@@ -9,7 +9,7 @@ public class NormalBrick extends Brick{
 
     public NormalBrick(){
         super();
-        var brickImage = new Image(this.getClass().getClassLoader().getResourceAsStream("blueBrick.gif"));
+        var brickImage = new Image(this.getClass().getClassLoader().getResourceAsStream("normalBrick.gif"));
         var brickImageView = new ImageView(brickImage);
         this.setBrickImage(brickImageView);
         this.setHitsLeft(HITS);

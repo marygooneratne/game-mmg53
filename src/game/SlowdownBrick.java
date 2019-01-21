@@ -9,7 +9,7 @@ public class SlowdownBrick extends Brick{
 
     public SlowdownBrick(){
         super();
-        var brickImage = new Image(this.getClass().getClassLoader().getResourceAsStream("blueBrick.gif"));
+        var brickImage = new Image(this.getClass().getClassLoader().getResourceAsStream("slowdownBrick.gif"));
         var brickImageView = new ImageView(brickImage);
         this.setBrickImage(brickImageView);
         this.setHitsLeft(HITS);
