@@ -12,15 +12,12 @@ public class SplashScreen {
 
     private Scene splashScreen;
     private ImageView splashImage;
-    private SceneController sceneControl;
 
     public SplashScreen(int width, int height, SceneController sceneControl) {
         var root = new Group();
         this.splashScreen = new Scene(root, width, height);
         this.setSplashImage();
         root.getChildren().add(this.getSplashImage());
-        this.splashScreen.setOnKeyPressed(e -> this.handleKeyInput(e.getCode()));
-        this.sceneControl = sceneControl;
     }
 
     public void setSplashImage(){
@@ -36,12 +33,6 @@ public class SplashScreen {
 
     public Scene getSplashScreen(){
         return this.splashScreen;
-    }
-
-    public void handleKeyInput(KeyCode code){
-        if(code == KeyCode.SPACE){
-            this.sceneControl.changeScene("1");
-        }
     }
 
 }

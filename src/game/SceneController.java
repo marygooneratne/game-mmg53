@@ -21,5 +21,4 @@ public class SceneController {
         mainStage.setScene(scenes.get(sceneName));
     }
 
-    public Scene get
 }

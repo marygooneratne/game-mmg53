@@ -15,6 +15,7 @@ public class Ball {
     private boolean isPaused;
 
     public Ball(Paddle paddle) {
+        this.lives = 3;
         this.ballImage = new ImageView();
         this.reset(paddle);
     }
