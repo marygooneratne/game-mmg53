@@ -43,10 +43,15 @@ public class BreakoutGame extends Application {
     private Ball ball;
     private Paddle paddle;
 
+    private boolean allLivesLevel1;
+    private boolean allLivesLevel2;
+
     @Override
     public void start(Stage stage) {
         this.score = 0;
         this.level = 0;
+        this.allLivesLevel1 = false;
+        this.allLivesLevel2 = false;
         this.paddle = new Paddle(SIZE);
         this.ball = new Ball(paddle);
         this.sceneControl = new SceneController(stage);
@@ -70,7 +75,6 @@ public class BreakoutGame extends Application {
         this.paddle = new Paddle(SIZE);
         this.ball = new Ball(paddle);
         this.levelInfo = new LevelInfo(this.score, this.level, this.ball.getLives());
-
 
         if(level == 3){
             this.brickWall = new BrickWall(BrickWall.LEVEL_THREE_STRING);
@@ -98,6 +102,8 @@ public class BreakoutGame extends Application {
         this.sceneControl.changeScene(LEVEL_ONE_NAME);
         this.currentScene = level1;
         this.sceneName = LEVEL_ONE_NAME;
+        this.level = LEVEL_ONE;
+        this.levelInfo.changeLevel(this.level);
     }
 
     public void levelTwo(){
@@ -107,6 +113,8 @@ public class BreakoutGame extends Application {
         this.sceneControl.changeScene(LEVEL_TWO_NAME);
         this.currentScene = level2;
         this.sceneName = LEVEL_TWO_NAME;
+        this.level = LEVEL_TWO;
+        this.levelInfo.changeLevel(this.level);
     }
 
    public void levelThree(){
@@ -116,6 +124,8 @@ public class BreakoutGame extends Application {
         this.sceneControl.changeScene(LEVEL_THREE_NAME);
         this.currentScene = level3;
         this.sceneName = LEVEL_THREE_NAME;
+        this.level = 3;
+        this.levelInfo.changeLevel(this.level);
     }
 
     public void gameOver() {
@@ -149,26 +159,39 @@ public class BreakoutGame extends Application {
     public void handleKeyInput(KeyCode code) {
         this.paddle.handleKeyInput(code);
         this.ball.handleKeyInput(code);
-        if(code == KeyCode.ENTER){
-            if(this.sceneName.equals(LEVEL_ONE_NAME)){
+        if(code == KeyCode.D) {
+            if (this.sceneName.equals(LEVEL_ONE_NAME)) {
                 this.levelTwo();
             }
-            else if(this.sceneName.equals(LEVEL_TWO_NAME)){
+            if (this.sceneName.equals(LEVEL_TWO_NAME)) {
                 this.levelThree();
             }
-            else if(this.sceneName.equals(LEVEL_THREE_NAME)){
+            if (this.sceneName.equals(LEVEL_THREE_NAME)) {
                 this.youWin();
             }
-        }
-    }
-
-    public void handleOtherInput(KeyCode code) {
-        if(code == KeyCode.SPACE){
-            this.levelOne();
         }
         if(code == KeyCode.DIGIT1){
             this.levelOne();
         }
+        if(code == KeyCode.DIGIT2){
+            this.levelTwo();
+        }
+        if(code == KeyCode.DIGIT3){
+            this.levelThree();
+        }
+    }
+
+    public void handleOtherInput(KeyCode code) {
+        if(code == KeyCode.SPACE || code == KeyCode.DIGIT1){
+            this.levelOne();
+        }
+        if(code == KeyCode.DIGIT2){
+            this.levelTwo();
+        }
+        if(code == KeyCode.DIGIT3){
+            this.levelThree();
+        }
+
     }
 
 
@@ -185,6 +208,30 @@ public class BreakoutGame extends Application {
                         this.score += 10;
                     }
                 }
+            }
+            if(bricksLeft.size() == 0){
+                if(this.sceneName.equals(LEVEL_ONE_NAME)){
+                    if(ball.getLives() == 3){
+                        this.allLivesLevel1 = true;
+                    }
+                    this.levelTwo();
+                }
+                else if(this.sceneName.equals(LEVEL_TWO_NAME)){
+                    if(ball.getLives() == 3){
+                        this.allLivesLevel2 = true;
+                    }
+                    this.levelThree();
+                    if(this.allLivesLevel1 && this.allLivesLevel2){
+                        ball.addLives(1);
+                    }
+                }
+                else if(this.sceneName.equals(LEVEL_THREE_NAME)){
+                    this.youWin();
+                }
+            }
+            this.levelInfo.update(this.score, this.level, this.ball.getLives());
+            if(ball.getLives() == 0){
+                this.gameOver();
             }
         }
 

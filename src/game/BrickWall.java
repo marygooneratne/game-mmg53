@@ -36,7 +36,7 @@ public class BrickWall {
 
     private void levelOne(){
         while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 3){
-            if(this.yRow == 0 || this.yRow == 2){
+            if(this.yRow == 50 || this.yRow == 2){
                 this.brickList.add(new NormalBrick());
             }
             else{
@@ -55,7 +55,7 @@ public class BrickWall {
 
     private void levelTwo(){
         this.levelOne();
-        while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 5){
+       while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 5){
             if(this.yRow == 3){
                 this.brickList.add(new NormalBrick());
             }
@@ -77,7 +77,7 @@ public class BrickWall {
 
     private void levelThree(){
         this.levelTwo();
-        while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 6){
+       while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 6){
             this.brickList.add(new NormalBrick());
             this.brickList.get(index).setLoc(this.xPos, this.yPos);
             if(this.xPos + BRICK_WIDTH == SIZE){

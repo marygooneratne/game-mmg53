@@ -105,7 +105,7 @@ public class Ball {
 
     public void reset(Paddle paddle) {
         this.ballSize = 20;
-        this.ballSpeed = 90;
+        this.ballSpeed = 300;
         this.ballDirection = 0;
         this.setBallImage();
         double ballY = paddle.getPaddleImage().getY() - this.ballImage.getBoundsInLocal().getHeight() - 1;
