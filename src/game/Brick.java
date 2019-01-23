@@ -29,7 +29,7 @@ public class Brick{
 
     public void hit(){
         this.hitsLeft--;
-        if(hitsLeft == 0){
+        if(this.hitsLeft == 0){
             this.brickImage.setImage(null);
             this.ifGone = true;
         }

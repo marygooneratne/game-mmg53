@@ -11,6 +11,7 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.ArrayList;
+import javafx.scene.text.Text;
 
 public class BreakoutGame extends Application {
     public static final String TITLE = "Breakout";
@@ -19,6 +20,7 @@ public class BreakoutGame extends Application {
     public static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
     public static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
     public static final Paint BACKGROUND = Color.BLACK;
+    public static final int BRICK_WIDTH = 40;
 
     public static final int LEVEL_ONE = 1;
     public static final int LEVEL_TWO = 2;
@@ -85,7 +87,7 @@ public class BreakoutGame extends Application {
         else{
             brickWall = new BrickWall(BrickWall.LEVEL_ONE_STRING);
         }
-        bricksLeft = brickWall.getBrickList();
+        this.bricksLeft = brickWall.getBrickList();
         root.getChildren().add(ball.getBallImage());
         root.getChildren().add(paddle.getPaddleImage());
         root.getChildren().add(levelInfo.getDisplay());
@@ -198,13 +200,28 @@ public class BreakoutGame extends Application {
     private void step(double elapsedTime) {
         if(this.sceneName.equals(LEVEL_ONE_NAME) || this.sceneName.equals(LEVEL_TWO_NAME) || this.sceneName.equals(LEVEL_THREE_NAME)) {
             ball.step(elapsedTime, paddle, SIZE);
-
-            for (Brick thisBrick : this.bricksLeft) {
+            for (int i = 0; i < this.bricksLeft.size();i++) {
+                var thisBrick = bricksLeft.get(i);
                 if (ball.hitsBrick(thisBrick)) {
                     thisBrick.hit();
+                    if(thisBrick instanceof SlowdownBrick){
+                        ball.slow();
+                    }
+                    if(thisBrick instanceof RainbowBrick){
+                        ball.rainbow();
+                    }
+                    if(thisBrick instanceof BombBrick){
+                        if((i+1)<bricksLeft.size() && bricksLeft.get(i+1).getBrickImage().getX() == thisBrick.getBrickImage().getX() + BRICK_WIDTH){
+                            bricksLeft.get(i+1).hit();
+                            i++;
+                        }
+                        if((i-1)>0 && bricksLeft.get(i-1).getBrickImage().getX() == thisBrick.getBrickImage().getX() - BRICK_WIDTH){
+                            bricksLeft.get(i+1).hit();
+                        }
+                    }
                     this.score += 5;
                     if (thisBrick.getIfGone()) {
-                        bricksLeft.remove(thisBrick);
+                        this.bricksLeft.remove(thisBrick);
                         this.score += 10;
                     }
                 }

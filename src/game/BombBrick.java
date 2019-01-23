@@ -9,7 +9,7 @@ public class BombBrick extends Brick{
 
     public BombBrick(){
         super();
-        var brickImage = new Image(this.getClass().getClassLoader().getResourceAsStream("normalBrick.gif"));
+        var brickImage = new Image(this.getClass().getClassLoader().getResourceAsStream("bombBrick.gif"));
         var brickImageView = new ImageView(brickImage);
         this.setBrickImage(brickImageView);
         this.setHitsLeft(HITS);

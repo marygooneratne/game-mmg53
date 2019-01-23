@@ -6,6 +6,7 @@ import javafx.scene.input.KeyCode;
 
 public class Ball {
     public static final String BALL_IMAGE = "ball.gif";
+    public static final String RAINBOW_BALL_IMAGE = "rainbowBall.gif";
 
     private ImageView ballImage;
     private double ballSpeed;
@@ -20,8 +21,8 @@ public class Ball {
         this.reset(paddle);
     }
 
-    public void setBallImage() {
-        var ballImage = new Image(this.getClass().getClassLoader().getResourceAsStream(BALL_IMAGE));
+    public void setBallImage(String image) {
+        var ballImage = new Image(this.getClass().getClassLoader().getResourceAsStream(image));
         this.getBallImage().setImage(ballImage);
         this.ballImage.setPreserveRatio(true);
         this.ballImage.setFitWidth(this.ballSize);
@@ -29,6 +30,10 @@ public class Ball {
 
     public ImageView getBallImage() {
         return ballImage;
+    }
+
+    public void rainbow(){
+        this.setBallImage(RAINBOW_BALL_IMAGE);
     }
 
     public void step(double elapsedTime, Paddle paddle, double screenSize) {
@@ -45,6 +50,7 @@ public class Ball {
             }
         }
     }
+
 
     public boolean hitsBrick(Brick brick) {
         if (this.ballImage.getBoundsInLocal().intersects(brick.getBrickImage().getBoundsInLocal())) {
@@ -107,7 +113,7 @@ public class Ball {
         this.ballSize = 20;
         this.ballSpeed = 300;
         this.ballDirection = 0;
-        this.setBallImage();
+        this.setBallImage(BALL_IMAGE);
         double ballY = paddle.getPaddleImage().getY() - this.ballImage.getBoundsInLocal().getHeight() - 1;
         double ballX = paddle.getPaddleImage().getX() + paddle.getPaddleImage().getBoundsInLocal().getWidth() / 2 - this.ballImage.getBoundsInLocal().getWidth() / 2;
         this.ballImage.setX(ballX);

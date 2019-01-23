@@ -20,8 +20,11 @@ public class Paddle {
     private boolean isLong;
     private boolean isFast;
     private boolean isSlow;
+    private boolean isPaused;
+    private double screenSize;
 
     public Paddle(double screenSize){
+        this.screenSize = screenSize;
         this.paddleImage = new ImageView();
         this.reset(screenSize);
     }
@@ -38,13 +41,17 @@ public class Paddle {
     }
 
     public void handleKeyInput(KeyCode code){
-        if(code == KeyCode.RIGHT) {
-            this.getPaddleImage().setX(this.getPaddleImage().getX() + this.paddleSpeed);
+        if(!this.isPaused){
+            if(code == KeyCode.RIGHT && !(this.getPaddleImage().getX() + this.paddleSpeed > this.screenSize)) {
+                this.getPaddleImage().setX(this.getPaddleImage().getX() + this.paddleSpeed);
+            }
+            if(code == KeyCode.LEFT && !(this.getPaddleImage().getX() - this.paddleSpeed < 0)) {
+                this.getPaddleImage().setX(this.getPaddleImage().getX() - this.paddleSpeed);
+            }
         }
-        if(code == KeyCode.LEFT) {
-            this.getPaddleImage().setX(this.getPaddleImage().getX() - this.paddleSpeed);
+        if (code == KeyCode.SPACE) {
+            this.togglePause();
         }
-
         if(code == KeyCode.L){
             this.makeLong();
         }
@@ -120,7 +127,10 @@ public class Paddle {
         double paddleY = screenSize - NORMAL_PADDLE_SIZE;
         this.setX(paddleX);
         this.setY(paddleY);
+        this.togglePause();
     }
 
-
+    public void togglePause(){
+        this.isPaused = !this.isPaused;
+    }
 }

@@ -35,8 +35,20 @@ public class BrickWall {
     }
 
     private void levelOne(){
+        int powerUpIndex1 = (int)(Math.random() * 30);
+        int powerUpIndex2 = (int)(Math.random() * 30);
+        int rainboxIndex = (int)(Math.random() * 30);
         while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 3){
-            if(this.yRow == 50 || this.yRow == 2){
+            if(((xPos/40)+(yRow*10)) == powerUpIndex1){
+                this.brickList.add(new SlowdownBrick());
+            }
+            else if(((xPos/40)+(yRow*10)) == powerUpIndex2){
+                this.brickList.add(new BombBrick());
+            }
+            else if(rainboxIndex % 2 == 0 && (((xPos/40)+(yRow*10)) == rainboxIndex)){
+                this.brickList.add(new RainbowBrick());
+            }
+            else if(this.yRow == 50 || this.yRow == 2){
                 this.brickList.add(new NormalBrick());
             }
             else{
@@ -51,11 +63,12 @@ public class BrickWall {
             }
             index++;
         }
+        //this.addPowerUps();
     }
 
     private void levelTwo(){
         this.levelOne();
-       while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 5){
+        while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 5){
             if(this.yRow == 3){
                 this.brickList.add(new NormalBrick());
             }
@@ -77,7 +90,7 @@ public class BrickWall {
 
     private void levelThree(){
         this.levelTwo();
-       while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 6){
+        while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 6){
             this.brickList.add(new NormalBrick());
             this.brickList.get(index).setLoc(this.xPos, this.yPos);
             if(this.xPos + BRICK_WIDTH == SIZE){
