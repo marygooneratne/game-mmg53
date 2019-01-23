@@ -1,6 +1,5 @@
 package game;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Brick{
@@ -8,7 +7,6 @@ public class Brick{
     public static final int BRICK_HEIGHT = 20;
 
     private int hitsLeft;
-    private String powerUp;
     private ImageView brickImage;
     private boolean ifGone;
 
@@ -17,10 +15,6 @@ public class Brick{
 
     public int getHitsLeft(){
         return this.hitsLeft;
-    }
-
-    public String getPowerUp(){
-        return this.powerUp;
     }
 
     public ImageView getBrickImage(){
@@ -43,10 +37,6 @@ public class Brick{
 
     public void setHitsLeft(int hitsLeft){
         this.hitsLeft = hitsLeft;
-    }
-
-    public void setPowerUp(String powerUp){
-        this.powerUp = powerUp;
     }
 
     public void setX(double x){

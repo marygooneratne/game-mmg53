@@ -11,7 +11,6 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.ArrayList;
-import javafx.scene.text.Text;
 
 public class BreakoutGame extends Application {
     public static final String TITLE = "Breakout";
@@ -140,7 +139,7 @@ public class BreakoutGame extends Application {
     }
 
     public void youWin() {
-        var youWin = new YouWin(SIZE, SIZE, this.sceneControl);
+        var youWin = new YouWin(SIZE, SIZE);
         sceneControl.newScene(YOU_WIN_SCENE_NAME, youWin.getScene());
         youWin.getScene().setOnKeyPressed(e -> handleOtherInput(e.getCode()));
         this.sceneControl.changeScene(YOU_WIN_SCENE_NAME);
@@ -165,10 +164,10 @@ public class BreakoutGame extends Application {
             if (this.sceneName.equals(LEVEL_ONE_NAME)) {
                 this.levelTwo();
             }
-            if (this.sceneName.equals(LEVEL_TWO_NAME)) {
+            else if (this.sceneName.equals(LEVEL_TWO_NAME)) {
                 this.levelThree();
             }
-            if (this.sceneName.equals(LEVEL_THREE_NAME)) {
+            else if (this.sceneName.equals(LEVEL_THREE_NAME)) {
                 this.youWin();
             }
         }

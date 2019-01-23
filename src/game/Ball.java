@@ -7,6 +7,10 @@ import javafx.scene.input.KeyCode;
 public class Ball {
     public static final String BALL_IMAGE = "ball.gif";
     public static final String RAINBOW_BALL_IMAGE = "rainbowBall.gif";
+    public static final int SPEED = 300;
+    public static final int SLOW_SPEED = 150;
+    public static final int START_LIVES = 3;
+    public static final int BALL_SIZE = 20;
 
     private ImageView ballImage;
     private double ballSpeed;
@@ -16,7 +20,7 @@ public class Ball {
     private boolean isPaused;
 
     public Ball(Paddle paddle) {
-        this.lives = 3;
+        this.lives = START_LIVES;
         this.ballImage = new ImageView();
         this.reset(paddle);
     }
@@ -54,8 +58,8 @@ public class Ball {
 
     public boolean hitsBrick(Brick brick) {
         if (this.ballImage.getBoundsInLocal().intersects(brick.getBrickImage().getBoundsInLocal())) {
-            var ballX = this.ballImage.getBoundsInLocal().getMinX() + this.ballImage.getFitWidth();
-            var imageX = brick.getBrickImage().getBoundsInLocal().getMinX() + brick.getBrickImage().getFitWidth();
+            var ballX = this.ballImage.getX() + (this.ballImage.getFitWidth()/2);
+            var imageX = brick.getBrickImage().getX() + (brick.getBrickImage().getFitWidth()/2);
             this.ballDirection = ballX - imageX;
             this.reverse();
             return true;
@@ -66,8 +70,8 @@ public class Ball {
 
     public void hitsPaddle(Paddle paddle) {
         if (this.ballImage.getBoundsInLocal().intersects(paddle.getPaddleImage().getBoundsInLocal())) {
-            var ballX = this.ballImage.getBoundsInLocal().getMinX() + this.ballImage.getFitWidth();
-            var imageX = paddle.getPaddleImage().getBoundsInLocal().getMinX() + paddle.getPaddleImage().getFitWidth();
+            var ballX = this.ballImage.getX() + (this.ballImage.getFitWidth()/2);
+            var imageX = paddle.getPaddleImage().getX() + (paddle.getPaddleImage().getFitWidth()/2);
             this.ballDirection = ballX - imageX;
             this.reverse();
         }
@@ -97,21 +101,13 @@ public class Ball {
         this.ballSpeed *= -1;
     }
 
-    public void setX(double x) {
-        this.ballImage.setX(x);
-    }
-
-    public void setY(double y) {
-        this.ballImage.setY(y);
-    }
-
     public void slow() {
-        this.ballSpeed = 60;
+        this.ballSpeed = SLOW_SPEED;
     }
 
     public void reset(Paddle paddle) {
-        this.ballSize = 20;
-        this.ballSpeed = 300;
+        this.ballSize = BALL_SIZE;
+        this.ballSpeed = SPEED;
         this.ballDirection = 0;
         this.setBallImage(BALL_IMAGE);
         double ballY = paddle.getPaddleImage().getY() - this.ballImage.getBoundsInLocal().getHeight() - 1;
@@ -119,14 +115,6 @@ public class Ball {
         this.ballImage.setX(ballX);
         this.ballImage.setY(ballY);
         this.isPaused = true;
-    }
-
-    public boolean noLives() {
-        if (this.lives == 0) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public void addLives(int newLives) {

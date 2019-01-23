@@ -12,7 +12,7 @@ public class YouWin{
     private Scene scene;
     private ImageView image;
 
-    public YouWin(int width, int height, SceneController sceneControl) {
+    public YouWin(int width, int height) {
         var root = new Group();
         this.scene = new Scene(root, width, height);
         this.setImage();

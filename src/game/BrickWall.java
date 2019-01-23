@@ -37,7 +37,7 @@ public class BrickWall {
     private void levelOne(){
         int powerUpIndex1 = (int)(Math.random() * 30);
         int powerUpIndex2 = (int)(Math.random() * 30);
-        int rainboxIndex = (int)(Math.random() * 30);
+        int rainbowIndex = (int)(Math.random() * 30);
         while(this.xPos + BRICK_WIDTH <= SIZE && this.yRow < 3){
             if(((xPos/40)+(yRow*10)) == powerUpIndex1){
                 this.brickList.add(new SlowdownBrick());
@@ -45,7 +45,7 @@ public class BrickWall {
             else if(((xPos/40)+(yRow*10)) == powerUpIndex2){
                 this.brickList.add(new BombBrick());
             }
-            else if(rainboxIndex % 2 == 0 && (((xPos/40)+(yRow*10)) == rainboxIndex)){
+            else if(rainbowIndex % 2 == 0 && (((xPos/40)+(yRow*10)) == rainbowIndex)){
                 this.brickList.add(new RainbowBrick());
             }
             else if(this.yRow == 50 || this.yRow == 2){
