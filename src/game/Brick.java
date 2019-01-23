@@ -59,5 +59,9 @@ public class Brick{
         this.setX(x);
         this.setY(y);
     }
+
+    public ImageView getImage(){
+        return this.brickImage;
+    }
 }
 

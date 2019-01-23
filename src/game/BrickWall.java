@@ -49,10 +49,10 @@ public class BrickWall {
                 this.brickList.add(new RainbowBrick());
             }
             else if(this.yRow == 50 || this.yRow == 2){
-                this.brickList.add(new NormalBrick());
+                this.brickList.add(new StrongBrick());
             }
             else{
-                this.brickList.add(new StrongBrick());
+                this.brickList.add(new NormalBrick());
             }
             this.brickList.get(index).setLoc(this.xPos, this.yPos);
             if(this.xPos + BRICK_WIDTH == SIZE){
@@ -63,7 +63,6 @@ public class BrickWall {
             }
             index++;
         }
-        //this.addPowerUps();
     }
 
     private void levelTwo(){

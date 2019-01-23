@@ -24,7 +24,7 @@ public class StrongBrick extends Brick {
             var newBrickImage = new Image(this.getClass().getClassLoader().getResourceAsStream(HIT_STRONG_BRICK_IMAGE));
             this.getBrickImage().setImage(newBrickImage);
         }
-        if (this.getHitsLeft() == 0) {
+        else if(this.getHitsLeft() == 0){
             this.getBrickImage().setImage(null);
             this.setIfGone(true);
         }

@@ -211,15 +211,23 @@ public class BreakoutGame extends Application {
                     }
                     if(thisBrick instanceof BombBrick){
                         if((i+1)<bricksLeft.size() && bricksLeft.get(i+1).getBrickImage().getX() == thisBrick.getBrickImage().getX() + BRICK_WIDTH){
-                            bricksLeft.get(i+1).hit();
+                            this.bricksLeft.get(i+1).getBrickImage().setImage(null);
+                            this.bricksLeft.get(i+1).setHitsLeft(0);
+                            this.bricksLeft.get(i+1).setIfGone(true);
+                            this.bricksLeft.remove(bricksLeft.get(i+1));
+                            this.score += 10;
                             i++;
                         }
-                        if((i-1)>0 && bricksLeft.get(i-1).getBrickImage().getX() == thisBrick.getBrickImage().getX() - BRICK_WIDTH){
-                            bricksLeft.get(i+1).hit();
+                        if((i-1)>=0 && bricksLeft.get(i-1).getBrickImage().getX() == thisBrick.getBrickImage().getX() - BRICK_WIDTH){
+                            this.bricksLeft.get(i-1).getBrickImage().setImage(null);
+                            this.bricksLeft.get(i-1).setHitsLeft(0);
+                            this.bricksLeft.get(i-1).setIfGone(true);
+                            this.bricksLeft.remove(bricksLeft.get(i-1));
+                            this.score += 10;
                         }
                     }
                     this.score += 5;
-                    if (thisBrick.getIfGone()) {
+                    if (thisBrick.getHitsLeft() == 0) {
                         this.bricksLeft.remove(thisBrick);
                         this.score += 10;
                     }
