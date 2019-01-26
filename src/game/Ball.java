@@ -4,7 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
-/** Class defining Ball object. Ball is instantiated prior to ever "reset" of the game
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * Class defining Ball object. Ball is instantiated prior to ever "reset" of the game
  * (e.g. life lost, level reset). The ball object is bounced using the paddle
  * and can collide with bricks to "hit" them. The ball starts at a standard speed
  * but can be changed by a power up brick. The ball has three lives or four

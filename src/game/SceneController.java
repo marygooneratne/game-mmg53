@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 
 /**
+ * CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
  * SceneController class used to toggle between scenes in main game methods. Allows program to add scenes to HashMap
  * to be easily set as the main Stage scene. Separates scene toggling from main methods.
  *

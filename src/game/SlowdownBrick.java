@@ -3,7 +3,8 @@ package game;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/** Type and extension of Brick class. Slowdown brick is a power-up brick placed
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * Type and extension of Brick class. Slowdown brick is a power-up brick placed
  * in a random location on the brick grid. When hit once, it is destructed and slows
  * the speed of the ball.
  */

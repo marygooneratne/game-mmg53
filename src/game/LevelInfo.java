@@ -5,7 +5,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
 
-/** LevelInfo is an object definition class used to create the Node displayed at the
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * LevelInfo is an object definition class used to create the Node displayed at the
  * bottom of level screens displaying relevant info about the current game state.
  * It is created automatically upon game configuration.
  */

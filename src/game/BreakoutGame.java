@@ -12,7 +12,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.ArrayList;
 
-/** Main class for Breakout game configuration and play. Breakout is a game in which
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ *  Main class for Breakout game configuration and play. Breakout is a game in which
  * the user maneuvers a paddle using arrow keys to bounce a ball to destroy a brick
  * grid. This class is a JavaFX application and is dependent on several game objects
  * defined in separate classes. This class's private instance varaibles include a BrickWall()

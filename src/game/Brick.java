@@ -15,7 +15,8 @@ public class Brick{
     private ImageView brickImage;
     private boolean ifGone;
 
-    /** Initializes new Brick object to be used in BrickWall() class used in formation of levels. Several different kinds
+    /** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+     * Initializes new Brick object to be used in BrickWall() class used in formation of levels. Several different kinds
      * of Bricks extend Brick(). Brick() is never called and used exclusively as a super class. Brick() has properties of
      * int hitsLeft, ImageView brickImage, and boolean ifGone.
      */

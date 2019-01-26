@@ -3,7 +3,8 @@ package game;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-/** The paddle is a object definition class called at the beginning of every new level
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * The paddle is a object definition class called at the beginning of every new level
  * or new ball life. The paddle is controlled by arrow keys and used to bounce ball to
  * break bricks. The paddle cannot move when the game is paused.
  */

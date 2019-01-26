@@ -6,7 +6,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
-/** SplashScreen is an object definition used to define the scene shown at the very
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * SplashScreen is an object definition used to define the scene shown at the very
  * beginning of the game. The scene contains all the rules and keys in an image.
  */
 public class SplashScreen {

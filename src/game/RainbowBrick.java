@@ -2,7 +2,8 @@ package game;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-/** Type and extension of Brick class. Rainbow brick is a brick placed
+/**CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * Type and extension of Brick class. Rainbow brick is a brick placed
  * in a random location on the brick grid at configuration. When hit ,
  * it turns the ball rainbow until a life is lost or new level begins.
  */

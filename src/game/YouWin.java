@@ -4,7 +4,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-/** YouWin() is a object definition to define a scene to be displayed at the victory of
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * YouWin() is a object definition to define a scene to be displayed at the victory of
  * Breakout game
  *
  */

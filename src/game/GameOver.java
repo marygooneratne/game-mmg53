@@ -5,7 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/** GameOver() is a object definition to define a scene to be displayed at the loss of
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * GameOver() is a object definition to define a scene to be displayed at the loss of
  * Breakout game
  *
  */

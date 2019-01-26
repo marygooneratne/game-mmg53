@@ -2,7 +2,8 @@ package game;
 
 import java.util.ArrayList;
 
-/** Instantiaion of BrickWall sets up the grid of bricks for the appropriate level
+/** CODE WRITTEN BY: MARY GOONERATNE (@mmg53)
+ * Instantiaion of BrickWall sets up the grid of bricks for the appropriate level
  *  of Breakout. The bricks are stored in an ArrayList. This class is responsible
  *  for creating Normal, Strong, and Power-up bricks, placing them on the Scene.
  *  This class is automatically called upon configuration of a game level. Instance
