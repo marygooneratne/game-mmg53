@@ -5,6 +5,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
 
+/** LevelInfo is an object definition class used to create the Node displayed at the
+ * bottom of level screens displaying relevant info about the current game state.
+ * It is created automatically upon game configuration.
+ */
+
 public class LevelInfo {
     public static final int SIZE = 400;
     public static final int HEIGHT = 20;
@@ -20,6 +25,13 @@ public class LevelInfo {
 
     private HBox display;
 
+    /** Initializes class responsible for score bar at bottom of level. Private variables include current score, level,
+     * lives left, corresponding text boxes, and HBox display object.
+     *
+     * @param score current score
+     * @param level current level
+     * @param lives current lives
+     */
     public LevelInfo(int score, int level, int lives){
         this.score = score;
         this.level = level;
@@ -30,43 +42,57 @@ public class LevelInfo {
         this.makeDisplay();
     }
 
+    /** Changes score and updates score text
+     *
+     * @param score new score
+     */
     public void changeScore(int score){
         this.score = score;
         scoreText.setText("SCORE: " + this.score);
     }
 
+    /** Changes level and updates level text
+     *
+     * @param level new level
+     */
     public void changeLevel(int level){
         this.level = level;
         levelText.setText("LEVEL: " + this.level);
     }
 
+    /** Changes lives and update lives text
+     *
+     * @param lives new lives
+     */
     public void changeLives(int lives){
         this.lives = lives;
         livesText.setText("LIVES: " + this.lives);
     }
 
-    public int getLives(){
-        return this.lives;
-    }
-
-    public int getLevel(){
-        return this.level;
-    }
-
-    public int getScore(){
-        return this.score;
-    }
+    /** Gets JavaFX Node HBox display to display on level scene
+     *
+     * @return HBox display
+     */
 
     public HBox getDisplay(){
         return this.display;
     }
 
+    /** Updates all variables of scorebar with setter methods
+     *
+     * @param score new score
+     * @param level new level
+     * @param lives new lives
+     */
     public void update(int score, int level, int lives){
         this.changeLives(lives);
         this.changeScore(score);
         this.changeLevel(level);
     }
 
+    /** Creates HBox to use as score bar, setting size alignment, styling, and text children.
+     *
+     */
     public void makeDisplay(){
         this.display = new HBox();
         this.display.setMaxHeight(HEIGHT);

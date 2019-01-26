@@ -12,6 +12,14 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.ArrayList;
 
+/** Main class for Breakout game configuration and play. Breakout is a game in which
+ * the user maneuvers a paddle using arrow keys to bounce a ball to destroy a brick
+ * grid. This class is a JavaFX application and is dependent on several game objects
+ * defined in separate classes. This class's private instance varaibles include a BrickWall()
+ * object, an ArrayList of Bricks left, the current scene, the score, level, a LevelInfo()
+ * score display Node, a SceneController, a sceneName, Ball(), and Paddle(). Running
+ * the main method begins the game.
+ */
 public class BreakoutGame extends Application {
     public static final String TITLE = "Breakout";
     public static final int SIZE = 400;
@@ -47,6 +55,12 @@ public class BreakoutGame extends Application {
     private boolean allLivesLevel1;
     private boolean allLivesLevel2;
 
+    /** The start() method is responsible for initializing the score, level, power-up variables as
+     * as well as instantiating the ball, paddle, and scene controller. The motion of the
+     * game is set by the intialization of the splash screen and continuous animations and calls
+     * to step().
+     * @param stage The JavaFX Stage object used to display the scenes
+     */
     @Override
     public void start(Stage stage) {
         this.score = 0;
@@ -96,7 +110,8 @@ public class BreakoutGame extends Application {
         }
         return gameScene;
     }
-    public void levelOne(){
+
+    private void levelOne(){
         var level1 = this.makeLevel(LEVEL_ONE, SIZE, BACKGROUND);
         sceneControl.newScene(LEVEL_ONE_NAME, level1);
         level1.setOnKeyPressed(e -> handleKeyInput(e.getCode()));
@@ -107,7 +122,7 @@ public class BreakoutGame extends Application {
         this.levelInfo.changeLevel(this.level);
     }
 
-    public void levelTwo(){
+    private void levelTwo(){
         var level2 = this.makeLevel(LEVEL_TWO, SIZE, BACKGROUND);
         sceneControl.newScene(LEVEL_TWO_NAME, level2);
         level2.setOnKeyPressed(e -> handleKeyInput(e.getCode()));
@@ -118,7 +133,7 @@ public class BreakoutGame extends Application {
         this.levelInfo.changeLevel(this.level);
     }
 
-   public void levelThree(){
+   private void levelThree(){
         var level3 = this.makeLevel(LEVEL_THREE, SIZE, BACKGROUND);
         sceneControl.newScene(LEVEL_THREE_NAME, level3);
         level3.setOnKeyPressed(e -> handleKeyInput(e.getCode()));
@@ -129,7 +144,7 @@ public class BreakoutGame extends Application {
         this.levelInfo.changeLevel(this.level);
     }
 
-    public void gameOver() {
+    private void gameOver() {
         var gameOver = new GameOver(SIZE, SIZE, this.sceneControl);
         sceneControl.newScene(GAME_OVER_SCENE_NAME, gameOver.getScene());
         gameOver.getScene().setOnKeyPressed(e -> handleOtherInput(e.getCode()));
@@ -138,7 +153,7 @@ public class BreakoutGame extends Application {
         this.sceneName = GAME_OVER_SCENE_NAME;
     }
 
-    public void youWin() {
+    private void youWin() {
         var youWin = new YouWin(SIZE, SIZE);
         sceneControl.newScene(YOU_WIN_SCENE_NAME, youWin.getScene());
         youWin.getScene().setOnKeyPressed(e -> handleOtherInput(e.getCode()));
@@ -147,7 +162,7 @@ public class BreakoutGame extends Application {
         this.sceneName = YOU_WIN_SCENE_NAME;
     }
 
-    public void splashScreen(){
+    private void splashScreen(){
         var splashScreen = new SplashScreen(SIZE, SIZE, this.sceneControl);
         sceneControl.newScene(SPLASH_SCREEN_NAME, splashScreen.getSplashScreen());
         splashScreen.getSplashScreen().setOnKeyPressed(e -> handleOtherInput(e.getCode()));
@@ -157,7 +172,7 @@ public class BreakoutGame extends Application {
     }
 
 
-    public void handleKeyInput(KeyCode code) {
+    private void handleKeyInput(KeyCode code) {
         this.paddle.handleKeyInput(code);
         this.ball.handleKeyInput(code);
         if(code == KeyCode.D) {
@@ -182,7 +197,7 @@ public class BreakoutGame extends Application {
         }
     }
 
-    public void handleOtherInput(KeyCode code) {
+    private void handleOtherInput(KeyCode code) {
         if(code == KeyCode.SPACE || code == KeyCode.DIGIT1){
             this.levelOne();
         }
@@ -261,6 +276,10 @@ public class BreakoutGame extends Application {
 
     }
 
+    /** The main method run to begin the game
+     *
+     * @param args
+     */
     public static void main(String[] args) {launch(args);}
 
 }

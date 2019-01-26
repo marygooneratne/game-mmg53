@@ -2,12 +2,18 @@ package game;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+/** Type and extension of Brick class. Strong brick is a brick placed
+ * in a set location on the brick grid at configuration. When hit twice,
+ * it is destructed.
+ */
 public class StrongBrick extends Brick {
     private static final int HITS = 2;
     private static final String STRONG_BRICK_IMAGE = "strongBrick.gif";
     private static final String HIT_STRONG_BRICK_IMAGE = "hitStrongBrick.gif";
 
+    /**Initializes StrongBrick() by setting its image and setting its initial hits to 2
+     *
+     */
     public StrongBrick(){
         super();
         var brickImage = new Image(this.getClass().getClassLoader().getResourceAsStream(STRONG_BRICK_IMAGE));
@@ -17,6 +23,10 @@ public class StrongBrick extends Brick {
 
     }
 
+    /**Overrides Brick() hit class to show a cracked brick when hit once and not
+     * destruct until hit twice
+     *
+     */
     @Override()
     public void hit() {
         this.setHitsLeft(this.getHitsLeft() - 1);
